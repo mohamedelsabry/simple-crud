@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4 class="mb-2">Expense Form</h4>
+    <form [formGroup]="expenseForm" (submit)="onSubmit()">
+      <div class="mb-3">
+        <label for="price" class="form-label">price</label>
+        <input type="text" class="form-control" id="price" placeholder="price" formControlName="price">
+        @if(expenseForm.get('price')?.hasError('required') && expenseForm.get('price')?.touched){
+        <p class="text-danger">
+          this field is required
+        </p>
+        }
+        @if(expenseForm.get('price')?.hasError('pattern') && expenseForm.get('price')?.touched){
+        <p class="text-danger">
+          this field must be a number
+        </p>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">title</label>
+        <input type="text" class="form-control" id="title" placeholder="title" formControlName="title">
+        @if(expenseForm.get('title')?.hasError('required') && expenseForm.get('title')?.touched){
+        <p class="text-danger">
+          this field is required
+        </p>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">description</label>
+        <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+
+      </div>
+      <button type="submit" class="btn btn-primary">update expense </button>
+    </form>
+  </div>
+</div>
